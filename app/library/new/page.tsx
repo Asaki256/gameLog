@@ -61,15 +61,15 @@ export default function NewGamePage() {
     <MainLayout>
       <div className="max-w-3xl mx-auto space-y-6">
         {/* ヘッダー */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-start gap-3 sm:gap-4">
           <Link href="/library">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="shrink-0">
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">ゲーム登録</h2>
-            <p className="text-muted-foreground">新しいゲームをライブラリに追加</p>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">ゲーム登録</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">新しいゲームをライブラリに追加</p>
           </div>
         </div>
 

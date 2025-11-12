@@ -9,8 +9,10 @@ import {
   BarChart3,
   Heart,
   Settings,
-  Gamepad2
+  Gamepad2,
+  X
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const navigation = [
   { name: 'ダッシュボード', href: '/', icon: LayoutDashboard },
@@ -20,14 +22,33 @@ const navigation = [
   { name: '設定', href: '/settings', icon: Settings },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export function Sidebar({ isOpen = false, onClose }: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <div className="flex h-screen w-64 flex-col border-r bg-card">
+    <div
+      className={cn(
+        'fixed md:static inset-y-0 left-0 z-50 flex h-screen w-64 flex-col border-r bg-card transition-transform duration-300 ease-in-out',
+        isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+      )}
+    >
       <div className="flex h-16 items-center border-b px-6">
         <Gamepad2 className="mr-2 h-6 w-6 text-primary" />
         <h1 className="text-xl font-bold">GameLog</h1>
+        {/* Close button for mobile */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="ml-auto md:hidden"
+          onClick={onClose}
+        >
+          <X className="h-5 w-5" />
+        </Button>
       </div>
       <nav className="flex-1 space-y-1 px-3 py-4">
         {navigation.map((item) => {
@@ -43,6 +64,7 @@ export function Sidebar() {
                   ? 'bg-primary text-primary-foreground'
                   : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
               )}
+              onClick={onClose}
             >
               <item.icon className="h-5 w-5" />
               {item.name}
@@ -55,9 +77,9 @@ export function Sidebar() {
           <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
             <span className="text-sm font-medium">GT</span>
           </div>
-          <div className="flex-1">
-            <p className="text-sm font-medium">ゲーマー太郎</p>
-            <p className="text-xs text-muted-foreground">gamer@example.com</p>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium truncate">ゲーマー太郎</p>
+            <p className="text-xs text-muted-foreground truncate">gamer@example.com</p>
           </div>
         </div>
       </div>

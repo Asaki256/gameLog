@@ -49,15 +49,15 @@ export default function GameDetailPage() {
     <MainLayout>
       <div className="space-y-6">
         {/* ヘッダー */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-start gap-3 sm:gap-4">
           <Link href="/library">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="shrink-0">
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight">{game.title}</h2>
-            <div className="mt-2 flex items-center gap-2">
+          <div className="min-w-0 flex-1">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight break-words">{game.title}</h2>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
               <Badge variant="outline">{PLATFORM_LABELS[game.platform]}</Badge>
               <Badge variant="secondary">{STATUS_LABELS[game.status]}</Badge>
             </div>

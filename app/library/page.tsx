@@ -64,15 +64,15 @@ export default function LibraryPage() {
   return (
     <MainLayout>
       <div className="space-y-6">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">ゲームライブラリ</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">ゲームライブラリ</h2>
             <p className="text-muted-foreground">
               {filteredAndSortedGames.length}本のゲーム
             </p>
           </div>
           <Link href="/library/new">
-            <Button>
+            <Button className="w-full sm:w-auto">
               <Plus className="mr-2 h-4 w-4" />
               ゲーム登録
             </Button>

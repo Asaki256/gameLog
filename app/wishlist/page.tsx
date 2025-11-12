@@ -23,14 +23,14 @@ export default function WishlistPage() {
   return (
     <MainLayout>
       <div className="space-y-6">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">Wishlist</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Wishlist</h2>
             <p className="text-muted-foreground">
               {mockWishlist.length}件の購入予定ゲーム
             </p>
           </div>
-          <Button onClick={handleAddGame}>
+          <Button onClick={handleAddGame} className="w-full sm:w-auto">
             <Plus className="mr-2 h-4 w-4" />
             追加
           </Button>
@@ -59,15 +59,15 @@ export default function WishlistPage() {
           {mockWishlist.length > 0 ? (
             mockWishlist.map((item) => (
               <Card key={item.id}>
-                <CardContent className="p-6">
-                  <div className="flex gap-6">
-                    <div className="h-32 w-24 shrink-0 rounded bg-muted flex items-center justify-center text-sm text-muted-foreground">
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                    <div className="h-32 w-24 shrink-0 rounded bg-muted flex items-center justify-center text-sm text-muted-foreground mx-auto sm:mx-0">
                       No Image
                     </div>
 
                     <div className="flex-1 space-y-3">
                       <div>
-                        <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                        <h3 className="text-lg sm:text-xl font-semibold mb-2">{item.title}</h3>
                         <Badge variant="outline">{PLATFORM_LABELS[item.platform]}</Badge>
                       </div>
 
@@ -96,14 +96,15 @@ export default function WishlistPage() {
                       )}
                     </div>
 
-                    <div className="flex flex-col gap-2">
-                      <Button variant="outline" size="sm">
+                    <div className="flex sm:flex-col gap-2">
+                      <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
                         購入済みにする
                       </Button>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => handleDelete(item.id)}
+                        className="sm:w-auto"
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>

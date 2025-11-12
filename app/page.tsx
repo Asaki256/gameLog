@@ -33,8 +33,8 @@ export default function DashboardPage() {
     <MainLayout>
       <div className="space-y-6">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">ダッシュボード</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">ダッシュボード</h2>
+          <p className="text-sm sm:text-base text-muted-foreground">
             あなたのゲームライブラリの概要
           </p>
         </div>
